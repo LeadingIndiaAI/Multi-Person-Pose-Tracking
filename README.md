@@ -83,29 +83,6 @@ Once OpenMPI is installed, you can install Horovod python library as follows:
 pip3 install horovod
 ```
 
-To enable parallel training, in `train_config.py`, set the `config.TRAIN.train_mode` to `parallel` (default is `single`).
-
-(i) To run on a machine with 4 GPUs:
-
-```bash
-$ mpirun -np 4 \
-    -bind-to none -map-by slot \
-    -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH \
-    -mca pml ob1 -mca btl ^openib \
-    python3 train.py
-```
-
-(ii) To run on 4 machines with 4 GPUs each:
-
-```bash
-$ mpirun -np 16 \
-    -H server1:4,server2:4,server3:4,server4:4 \
-    -bind-to none -map-by slot \
-    -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH \
-    -mca pml ob1 -mca btl ^openib \
-    python3 train.py
-```
-
 We also have a Python binding for the engine. The current binding relies on
 the external tf-pose-estimation project. We are working on providing the Python binding for our high-performance
 C++ implementation. For now, to enable the binding, please build C++ library for post processing by:
@@ -162,10 +139,3 @@ Runs `eval.py` for inference.
 You can use the project code under a free [Apache 2.0 license](https://github.com/tensorlayer/tensorlayer/blob/master/LICENSE.rst) ONLY IF you:
 - Cite the [TensorLayer paper](https://github.com/tensorlayer/tensorlayer#cite) and this project in your research article if you are an **academic user**.
 - Acknowledge TensorLayer and this project in your project websites/articles if you are a **commercial user**.
-
-## Paper's Model
-
-- [Default MPII](https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation/blob/master/model/_trained_MPI/pose_deploy.prototxt)
-- [Default COCO model](https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation/blob/master/model/_trained_COCO/pose_deploy.prototxt)
-- [Visualizing Caffe model](http://ethereon.github.io/netscope/#/editor)
--->
