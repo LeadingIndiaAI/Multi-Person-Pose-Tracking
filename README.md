@@ -106,26 +106,6 @@ $ mpirun -np 16 \
     python3 train.py
 ```
 
-
-## High-performance Inference using TensorRT
-
-Real-time inference on resource-constrained embedded platforms
-is always challenging. To resolve this, we provide a TensorRT-compatible inference engine.
-The engine has two C++ APIs, both defined in `include/openpose-plus.hpp`.
-They are for running the TensorFlow model with TensorRT and post-processing respectively.
-
-You can build the APIs into a standard C++ library by just running `make pack`, provided that you have the following dependencies installed
-
-  - tensorRT
-  - opencv
-  - gflags
-
-We are improving the performance of the engine.
-Initial benchmark results for running the full OpenPose model are as follows.
-On Jetson TX2, the inference speed is 13 frames / second (the mobilenet variant is even faster).
-On Jetson TX1, the speed is 10 frames / second. On Titan 1050, the
-speed is 38 frames / second.
-
 We also have a Python binding for the engine. The current binding relies on
 the external tf-pose-estimation project. We are working on providing the Python binding for our high-performance
 C++ implementation. For now, to enable the binding, please build C++ library for post processing by:
@@ -168,12 +148,6 @@ To use the pre-trained models
 
 Runs `eval.py` for inference.
 
-
-## . Speed up and deployment
-
-For TensorRT float16 (half-float) inferencing, xxx
-
-
 ## 6. Customization
 
 - Model : change `models.py`.
@@ -189,14 +163,6 @@ You can use the project code under a free [Apache 2.0 license](https://github.co
 - Cite the [TensorLayer paper](https://github.com/tensorlayer/tensorlayer#cite) and this project in your research article if you are an **academic user**.
 - Acknowledge TensorLayer and this project in your project websites/articles if you are a **commercial user**.
 
-## Related Discussion
-
-- [TensorLayer Slack](https://join.slack.com/t/tensorlayer/shared_invite/enQtMjUyMjczMzU2Njg4LWI0MWU0MDFkOWY2YjQ4YjVhMzI5M2VlZmE4YTNhNGY1NjZhMzUwMmQ2MTc0YWRjMjQzMjdjMTg2MWQ2ZWJhYzc)
-- [TensorLayer WeChat](https://github.com/tensorlayer/tensorlayer-chinese/blob/master/docs/wechat_group.md)
-- [TensorLayer Issues 434](https://github.com/tensorlayer/tensorlayer/issues/434)
-- [TensorLayer Issues 416](https://github.com/tensorlayer/tensorlayer/issues/416)
-
-<!--
 ## Paper's Model
 
 - [Default MPII](https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation/blob/master/model/_trained_MPI/pose_deploy.prototxt)
